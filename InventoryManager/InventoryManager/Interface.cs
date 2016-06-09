@@ -33,14 +33,16 @@ namespace InventoryManager
 
         public void display_user_console()
         {
+            Console.WriteLine();
             Console.WriteLine("What would you like to do?");
-            Console.WriteLine("1 - View Items.");
-            Console.WriteLine("2 - Checkout Item.");
-            Console.WriteLine("3 - Return Item.");
-            Console.WriteLine("4 - View Checked Items."); // in progress
+            Console.WriteLine("1 - View Items");
+            Console.WriteLine("2 - Checkout Item");
+            Console.WriteLine("3 - Return Item");
+            Console.WriteLine("4 - View Checked Items");
             Console.WriteLine("5 - Admin Console");
             Console.WriteLine("6 - Logout");
             Console.WriteLine("Esc - Shut Down");
+            Console.WriteLine();
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.NumPad1 || entry == ConsoleKey.D1)
             {
@@ -82,14 +84,16 @@ namespace InventoryManager
 
         public void display_admin_console()
         {
+            Console.WriteLine();
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1 - Edit Item");
-            Console.WriteLine("2 - Edit User"); // in progress
+            Console.WriteLine("2 - View Users");
             Console.WriteLine("3 - Create Item");
             Console.WriteLine("4 - Create User");
             Console.WriteLine("5 - User Console");
             Console.WriteLine("6 - Logout");
             Console.WriteLine("Esc - Shut Down");
+            Console.WriteLine();
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.NumPad1 || entry == ConsoleKey.D1)
             {
@@ -97,7 +101,7 @@ namespace InventoryManager
             }
             else if (entry == ConsoleKey.NumPad2 || entry == ConsoleKey.D2)
             {
-                edit_user();
+                list_users();
             }
             else if (entry == ConsoleKey.NumPad3 || entry == ConsoleKey.D3)
             {
@@ -122,6 +126,11 @@ namespace InventoryManager
             }
         }
 
+        public void list_users()
+        {
+            database.list_users();
+        }
+
         public void create_new_user()
         {
             int status = database.check_status();
@@ -136,11 +145,6 @@ namespace InventoryManager
             int count = library.check_status();
             item.create_new_item(item, count);
             library.update_list(item);
-        }
-
-        public void edit_user()
-        {
-            activeuser.edit_user();
         }
 
         public void edit_item()

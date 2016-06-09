@@ -17,11 +17,6 @@ namespace InventoryManager
 
         public bool uservalid;
 
-        public void edit_user()
-        {
-
-        }
-
         public void create_new_user(int status)
         {
             while (uservalid == false)

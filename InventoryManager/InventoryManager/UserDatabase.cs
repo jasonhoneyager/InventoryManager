@@ -52,5 +52,13 @@ namespace InventoryManager
             failedlogin = null;
             return failedlogin;            
         }
+
+        public void list_users()
+        {
+            foreach (User user in users)
+            {
+                Console.WriteLine("{0}, {1}, Admin: {2}", user.name, user.login, user.admin);
+            }
+        }
     }
 }

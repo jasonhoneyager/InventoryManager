@@ -20,6 +20,7 @@ namespace InventoryManager
             {
                 Console.WriteLine("{0}, {1}, {2}", item.itemnumber, item.name, item.quantity);
             }
+            Console.WriteLine();
             string edit = Console.ReadLine();
             foreach (Item item in items)
                 if (item.itemnumber == edit)
@@ -99,6 +100,7 @@ namespace InventoryManager
                 {
                     Console.WriteLine("{0}, {1}, {2}", item.itemnumber, item.name, item.quantity);
                 }
+                Console.WriteLine();
                 string edit = Console.ReadLine();
                 foreach (Item item in items)
                     if (item.itemnumber == edit && item.quantity > 0)
@@ -116,6 +118,7 @@ namespace InventoryManager
             {
                 Console.WriteLine("{0}, {1}", item.itemnumber, item.name);
             }
+            Console.WriteLine();
             string edit = Console.ReadLine();
             foreach (Item item in activeuser.held)
             {
