@@ -57,7 +57,7 @@ namespace InventoryManager
         {
             foreach (User user in users)
             {
-                Console.WriteLine("{0}, {1}, Admin: {2}", user.name, user.login, user.admin);
+                Console.WriteLine("Name: {0}, Login: {1}, Admin: {2}", user.name, user.login, user.admin);
             }
         }
     }

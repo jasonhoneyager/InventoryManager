@@ -15,7 +15,6 @@ namespace InventoryManager
 
         bool itemvalid;
 
-
         public void create_new_item(Item item, int count)
         {
             itemvalid = false;
@@ -37,8 +36,20 @@ namespace InventoryManager
 
         public int set_item_quantity()
         {
-            Console.WriteLine("Please Enter Item Quantity: ");
-            int item = Convert.ToInt32(Console.ReadLine());
+            int item = -1;
+            while (item < 0)
+            {
+                Console.WriteLine("Please Enter Item Quantity: ");
+                try
+                {
+                    item = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid Entry.  Input must be a number.");
+                    Console.WriteLine();
+                }
+            }
             return item;
         }
 

@@ -46,19 +46,19 @@ namespace InventoryManager
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.NumPad1 || entry == ConsoleKey.D1)
             {
-                view_item();
+                library.view_items();
             }
             else if (entry == ConsoleKey.NumPad2 || entry == ConsoleKey.D2)
             {
-                checkout_item();
+                library.checkout_item(activeuser);
             }
             else if (entry == ConsoleKey.NumPad3 || entry == ConsoleKey.D3)
             {
-                return_item();
+                library.check_item_count(activeuser);
             }
             else if (entry == ConsoleKey.NumPad4 || entry == ConsoleKey.D4)
             {
-                view_checked();
+                library.view_checked(activeuser);
             }
             else if (entry == ConsoleKey.NumPad5 || entry == ConsoleKey.D5)
             {
@@ -97,11 +97,11 @@ namespace InventoryManager
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.NumPad1 || entry == ConsoleKey.D1)
             {
-                edit_item();
+                library.edit_item();
             }
             else if (entry == ConsoleKey.NumPad2 || entry == ConsoleKey.D2)
             {
-                list_users();
+                database.list_users();
             }
             else if (entry == ConsoleKey.NumPad3 || entry == ConsoleKey.D3)
             {
@@ -126,11 +126,6 @@ namespace InventoryManager
             }
         }
 
-        public void list_users()
-        {
-            database.list_users();
-        }
-
         public void create_new_user()
         {
             int status = database.check_status();
@@ -147,30 +142,6 @@ namespace InventoryManager
             library.update_list(item);
         }
 
-        public void edit_item()
-        {
-            library.edit_item();
-        }
-
-        public void checkout_item()
-        {
-            library.checkout_item(activeuser);
-        }
-
-        public void view_item()
-        {
-            library.view_items();
-        }
-
-        public void return_item()
-        {
-            library.return_item(activeuser);
-        }
-
-        public void view_checked()
-        {
-            library.view_checked(activeuser);
-        }
         public void login()
         {
             while (activeuser == null)

@@ -32,6 +32,7 @@ namespace InventoryManager
         {
             Console.WriteLine("Please Enter Your Name: ");
             string name = Console.ReadLine();
+            Console.WriteLine();
             return name;
         }
 
@@ -46,6 +47,7 @@ namespace InventoryManager
             {
                 Console.WriteLine("Make this user an Admin? Y/N: ");
                 ConsoleKey key = Console.ReadKey(true).Key;
+                Console.WriteLine();
                 if (key == ConsoleKey.Y)
                 {
                     admin = true;
@@ -81,6 +83,7 @@ namespace InventoryManager
             Console.WriteLine("Admin Access: {0}.", admin);
             Console.WriteLine("Is this OK?  Y/N: ");
             ConsoleKey entry = Console.ReadKey(true).Key;
+            Console.WriteLine();
             if (entry == ConsoleKey.N)  //readkey function forces an input each time it is used.
             {
                 create_new_user(status);  //"entry" variable method allows for usage as designed in code.
