@@ -15,15 +15,15 @@ namespace InventoryManager
         public bool logged_in;
         public bool system_active;
 
-        public void initialize_system()
+        public void InitializeSystem()
         {
-            int status = database.check_status();
+            int status = database.CheckStatus();
             if (status == 0)
             {
                 Console.WriteLine("Initial User must be designated as Administrator.");
                 User user = new User();
-                user.create_new_user(status);
-                database.update_list(user);              
+                user.CreateNewUser(status);
+                database.UpdateList(user);              
             }
             else
             {
@@ -31,7 +31,7 @@ namespace InventoryManager
             }
         }
 
-        public void display_user_console()
+        public void DisplayUserConsole()
         {
             Console.WriteLine();
             Console.WriteLine("What would you like to do?");
@@ -46,19 +46,19 @@ namespace InventoryManager
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.NumPad1 || entry == ConsoleKey.D1)
             {
-                library.view_items();
+                library.ViewItems();
             }
             else if (entry == ConsoleKey.NumPad2 || entry == ConsoleKey.D2)
             {
-                library.checkout_item(activeuser);
+                library.CheckoutItem(activeuser);
             }
             else if (entry == ConsoleKey.NumPad3 || entry == ConsoleKey.D3)
             {
-                library.check_item_count(activeuser);
+                library.CheckItemCount(activeuser);
             }
             else if (entry == ConsoleKey.NumPad4 || entry == ConsoleKey.D4)
             {
-                library.view_checked(activeuser);
+                library.ViewChecked(activeuser);
             }
             else if (entry == ConsoleKey.NumPad5 || entry == ConsoleKey.D5)
             {
@@ -68,21 +68,21 @@ namespace InventoryManager
                 }
                 else
                 {
-                    display_admin_console();
+                    DisplayAdminConsole();
                 }
             }
             else if (entry == ConsoleKey.NumPad6 || entry == ConsoleKey.D6)
             {
-                logout();
+                Logout();
             }
             else if (entry == ConsoleKey.Escape)
             {
                 system_active = false;
-                logout();
+                Logout();
             }
         }
 
-        public void display_admin_console()
+        public void DisplayAdminConsole()
         {
             Console.WriteLine();
             Console.WriteLine("What would you like to do?");
@@ -97,93 +97,93 @@ namespace InventoryManager
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.NumPad1 || entry == ConsoleKey.D1)
             {
-                library.edit_item();
+                library.EditItem();
             }
             else if (entry == ConsoleKey.NumPad2 || entry == ConsoleKey.D2)
             {
-                database.list_users();
+                database.ListUsers();
             }
             else if (entry == ConsoleKey.NumPad3 || entry == ConsoleKey.D3)
             {
-                create_new_item();
+                CreateNewItem();
             }
             else if (entry == ConsoleKey.NumPad4 || entry == ConsoleKey.D4)
             {
-                create_new_user();
+                CreateNewUser();
             }
             else if (entry == ConsoleKey.NumPad5 || entry == ConsoleKey.D5)
             {
-                display_user_console();
+                DisplayUserConsole();
             }
             else if (entry == ConsoleKey.NumPad6 || entry == ConsoleKey.D6)
             {
-                logout();
+                Logout();
             }
             else if (entry == ConsoleKey.Escape)
             {
                 system_active = false;
-                logout();
+                Logout();
             }
         }
 
-        public void create_new_user()
+        public void CreateNewUser()
         {
-            int status = database.check_status();
+            int status = database.CheckStatus();
             User user = new User();
-            user.create_new_user(status);
-            database.update_list(user);
+            user.CreateNewUser(status);
+            database.UpdateList(user);
         }
 
-        public void create_new_item()
+        public void CreateNewItem()
         {
             Item item = new Item();
-            int count = library.check_status();
-            item.create_new_item(item, count);
-            library.update_list(item);
+            int count = library.CheckStatus();
+            item.CreateNewItem(item, count);
+            library.UpdateList(item);
         }
 
-        public void login()
+        public void Login()
         {
             while (activeuser == null)
             {
                 Console.WriteLine("Please Enter your Login: ");
                 string login = Console.ReadLine();
-                activeuser = database.obtain_login(login);
+                activeuser = database.ObtainLogin(login);
             }
             Console.WriteLine("Welcome, {0}!", activeuser.name);
         }
 
-        public void logout()
+        public void Logout()
         {
             activeuser = null;
             logged_in = false;
-            library.save_library_data();
-            database.save_user_data();
+            library.SaveLibraryData();
+            database.SaveUserData();
         }
 
-        public void load_previous_data()
+        public void LoadPreviousData()
         {
-            database.load_user_data();
-            library.load_library_data();
+            database.LoadUserData();
+            library.LoadLibraryData();
         }
 
-        public void run_program()
+        public void RunProgram()
         {
             try
             {
-                load_previous_data();
+                LoadPreviousData();
             }
             catch (Exception)
             {
-                initialize_system();
+                InitializeSystem();
             }
             system_active = true;
             while (system_active == true)
             {
-                login();
+                Login();
                 logged_in = true;
                 while (logged_in == true)
-                    display_user_console();
+                    DisplayUserConsole();
             }
         }
     }

@@ -11,29 +11,28 @@ namespace InventoryManager
         public string name;
         public string itemnumber;
         public int quantity;
-
         bool itemvalid;
 
-        public void create_new_item(Item item, int count)
+        public void CreateNewItem(Item item, int count)
         {
             itemvalid = false;
             while (itemvalid == false)
             {
-                name = set_item_name();
-                quantity = set_item_quantity();
-                itemnumber = set_item_number(count);
-                validate_new_item(name, quantity, itemnumber, item, count);
+                name = SetItemName();
+                quantity = SetItemQuantity();
+                itemnumber = SetItemNumber(count);
+                ValidateNewItem(name, quantity, itemnumber, item, count);
             }
         }
 
-        public string set_item_name()
+        public string SetItemName()
         {
             Console.WriteLine("Please Enter Item Name: ");
             string item = Console.ReadLine();
             return item;
         }
 
-        public int set_item_quantity()
+        public int SetItemQuantity()
         {
             int item = -1;
             while (item < 0)
@@ -52,14 +51,14 @@ namespace InventoryManager
             return item;
         }
 
-        public string set_item_number(int count)
+        public string SetItemNumber(int count)
         {
             string number = Convert.ToString(count);
             string number2 = number.PadLeft(4, '0');
             return number2;
         }
 
-        public void validate_new_item(string name, int quantity, string itemnumber, Item item, int count)
+        public void ValidateNewItem(string name, int quantity, string itemnumber, Item item, int count)
         {
             Console.WriteLine("Item Name: {0}.", name);
             Console.WriteLine("Item Number: {0}.", itemnumber);
@@ -68,7 +67,7 @@ namespace InventoryManager
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.N)  //readkey function forces an input each time it is used.
             {
-                create_new_item(item, count);  //"entry" variable method allows for usage as designed in code.
+                CreateNewItem(item, count);  //"entry" variable method allows for usage as designed in code.
             }
             else if (entry == ConsoleKey.Y)
             {

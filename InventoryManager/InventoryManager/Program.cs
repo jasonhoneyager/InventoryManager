@@ -12,7 +12,7 @@ namespace InventoryManager
         static void Main(string[] args)
         {            
             Interface ui = new Interface();
-            ui.run_program();
+            ui.RunProgram();
         }
     }
 }

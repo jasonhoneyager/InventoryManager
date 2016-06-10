@@ -13,32 +13,32 @@ namespace InventoryManager
     {
         List<User> users = new List<User>();
 
-        public int check_status()
+        public int CheckStatus()
         {
             int state = users.Count;
             return state;
         }
 
-        public void save_user_data()
+        public void SaveUserData()
         {
             string json = new JavaScriptSerializer().Serialize(users);
             File.WriteAllText(Environment.CurrentDirectory + @"\user.txt", json);
         }
 
-        public void load_user_data()
+        public void LoadUserData()
         {
             string json = File.ReadAllText(Environment.CurrentDirectory + @"\user.txt");
             users = new JavaScriptSerializer().Deserialize<List<User>>(json);
         }
 
-        public void update_list(User user)
+        public void UpdateList(User user)
         {
             users.Add(user);
             Console.WriteLine("Database Updated.");
             Console.ReadKey();
         }
 
-        public User obtain_login(string login)
+        public User ObtainLogin(string login)
         {
             foreach (User user in users)
             {
@@ -53,7 +53,7 @@ namespace InventoryManager
             return failedlogin;            
         }
 
-        public void list_users()
+        public void ListUsers()
         {
             foreach (User user in users)
             {

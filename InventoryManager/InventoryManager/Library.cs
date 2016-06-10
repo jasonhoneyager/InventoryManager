@@ -13,7 +13,7 @@ namespace InventoryManager
     {
         List<Item> items = new List<Item>();
 
-        public void edit_item()
+        public void EditItem()
         {
             Console.WriteLine("Which item # do you wish to edit? ");
             foreach (Item item in items)
@@ -26,21 +26,21 @@ namespace InventoryManager
             {
                 if (item.itemnumber == edit)
                 {
-                    edit_name(item);
-                    edit_quantity(item);
+                    EditName(item);
+                    EditQuantity(item);
                     break;
                 }
             }
             Console.WriteLine("Invalid Input:");
         }
 
-        public void edit_name(Item item)
+        public void EditName(Item item)
         {
             Console.WriteLine("Please Enter New Item Name: ");
             item.name = Console.ReadLine();
         }
 
-        public void edit_quantity(Item item)
+        public void EditQuantity(Item item)
         {
             Console.WriteLine("Please Enter New Item Quantity: ");
             try
@@ -53,32 +53,32 @@ namespace InventoryManager
             }
         }
 
-        public int check_status()
+        public int CheckStatus()
         {
             int count = items.Count;
             return count;
         }
         
-        public void update_list(Item item)
+        public void UpdateList(Item item)
         {
             items.Add(item);
             Console.WriteLine("Library Updated.");
             Console.ReadKey();
         }
 
-        public void save_library_data()
+        public void SaveLibraryData()
         {
             string json = new JavaScriptSerializer().Serialize(items);
             File.WriteAllText(Environment.CurrentDirectory + @"\item.txt", json);
         }
 
-        public void load_library_data()
+        public void LoadLibraryData()
         {
             string json = File.ReadAllText(Environment.CurrentDirectory + @"\item.txt");
             items = new JavaScriptSerializer().Deserialize<List<Item>>(json);
         }
 
-        public void view_items()
+        public void ViewItems()
         {
             foreach (Item item in items)
             {
@@ -86,7 +86,7 @@ namespace InventoryManager
             }
         }
 
-        public void view_checked(User activeuser)
+        public void ViewChecked(User activeuser)
         {
             Console.WriteLine("Name: {0}, Login: {1}", activeuser.name, activeuser.login);
             int len = activeuser.held.Count;
@@ -97,7 +97,7 @@ namespace InventoryManager
             }
         }
 
-        public void checkout_item(User activeuser)
+        public void CheckoutItem(User activeuser)
         {
             if (activeuser.held.Count == 3)
             {
@@ -112,13 +112,13 @@ namespace InventoryManager
                 }
                 Console.WriteLine();
                 string edit = Console.ReadLine();
-                bool validitem = verify_item(edit);
-                bool validquantity = verify_quantity(edit);
-                complete_checkout(activeuser, edit, validitem, validquantity);
+                bool validitem = VerifyItem(edit);
+                bool validquantity = VerifyQuantity(edit);
+                CompleteCheckout(activeuser, edit, validitem, validquantity);
             }
         }
 
-        public bool verify_item(string edit)
+        public bool VerifyItem(string edit)
         {
             bool validitem = false;
             foreach (Item item in items)
@@ -132,7 +132,7 @@ namespace InventoryManager
             return validitem;
         }
 
-        public bool verify_quantity(string edit)
+        public bool VerifyQuantity(string edit)
         {
             bool validquantity = true;
             foreach (Item item in items)
@@ -146,7 +146,7 @@ namespace InventoryManager
             return validquantity;
         }
 
-        public void complete_checkout(User activeuser, string edit, bool validitem, bool validquantity)
+        public void CompleteCheckout(User activeuser, string edit, bool validitem, bool validquantity)
         {
             foreach (Item item in items)
             {
@@ -163,7 +163,7 @@ namespace InventoryManager
             }
         }
 
-        public void check_item_count(User activeuser)
+        public void CheckItemCount(User activeuser)
         {
             if (activeuser.held.Count == 0)
             {
@@ -171,11 +171,11 @@ namespace InventoryManager
             }
             else
             {
-                return_item(activeuser);
+                ReturnItem(activeuser);
             }
         }
 
-        public void return_item(User activeuser)
+        public void ReturnItem(User activeuser)
         {
             Console.WriteLine("Which item # do you wish to return? ");
             foreach (Item item in activeuser.held)
@@ -190,7 +190,7 @@ namespace InventoryManager
                 if (item.itemnumber == edit)
                 {
                     activeuser.held.Remove(item);
-                    complete_return(activeuser, edit);
+                    CompleteReturn(activeuser, edit);
                     validinput = true;
                     break;
                 }
@@ -201,7 +201,7 @@ namespace InventoryManager
             }
         }
 
-        public void complete_return(User activeuser, string edit)
+        public void CompleteReturn(User activeuser, string edit)
         {
             foreach (Item item in items)
                 if (item.itemnumber == edit)

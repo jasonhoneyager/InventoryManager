@@ -17,18 +17,18 @@ namespace InventoryManager
 
         public bool uservalid;
 
-        public void create_new_user(int status)
+        public void CreateNewUser(int status)
         {
             while (uservalid == false)
             {
-                name = name_new_user();
-                admin = set_admin_privilige(status);
-                login = set_login(admin, status);
-                validate_new_info(name, admin, login, status);
+                name = NameNewUser();
+                admin = SetAdminPrivilige(status);
+                login = SetLogin(admin, status);
+                ValidateNewInfo(name, admin, login, status);
             }
         }
 
-        public string name_new_user()
+        public string NameNewUser()
         {
             Console.WriteLine("Please Enter Your Name: ");
             string name = Console.ReadLine();
@@ -36,7 +36,7 @@ namespace InventoryManager
             return name;
         }
 
-        public bool set_admin_privilige(int status)
+        public bool SetAdminPrivilige(int status)
         {
             if (status == 0)
             {
@@ -60,7 +60,7 @@ namespace InventoryManager
             }
         }
 
-        public string set_login(bool admin, int status)
+        public string SetLogin(bool admin, int status)
         {
             string len = Convert.ToString(status);
             string login = len.PadLeft(4, '0');
@@ -76,7 +76,7 @@ namespace InventoryManager
             }
         }
 
-        public void validate_new_info(string name, bool admin, string login, int status)
+        public void ValidateNewInfo(string name, bool admin, string login, int status)
         {
             Console.WriteLine("User Name: {0}.", name);
             Console.WriteLine("User Login: {0}.", login);
@@ -86,7 +86,7 @@ namespace InventoryManager
             Console.WriteLine();
             if (entry == ConsoleKey.N)  //readkey function forces an input each time it is used.
             {
-                create_new_user(status);  //"entry" variable method allows for usage as designed in code.
+                CreateNewUser(status);  //"entry" variable method allows for usage as designed in code.
             }
             else if (entry == ConsoleKey.Y)
             {
