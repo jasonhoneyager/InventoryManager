@@ -184,18 +184,20 @@ namespace InventoryManager
             }
             Console.WriteLine();
             string edit = Console.ReadLine();
+            bool validinput = false;
             foreach (Item item in activeuser.held)
             {
                 if (item.itemnumber == edit)
                 {
                     activeuser.held.Remove(item);
                     complete_return(activeuser, edit);
+                    validinput = true;
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("Invalid Input:");
-                }
+            }
+            if (validinput == false)
+            {
+                Console.WriteLine("Invalid Input:");
             }
         }
 

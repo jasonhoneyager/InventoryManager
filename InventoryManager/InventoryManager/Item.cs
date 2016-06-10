@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace InventoryManager
 {
-    [Serializable]
     public class Item
     {
         public string name;
