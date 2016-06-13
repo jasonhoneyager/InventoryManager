@@ -27,8 +27,9 @@ namespace InventoryManager
 
         public string SetItemName()
         {
-            Console.WriteLine("Please Enter Item Name: ");
+            Console.WriteLine("Please Enter Item Name:\n");
             string item = Console.ReadLine();
+            Console.WriteLine();
             return item;
         }
 
@@ -37,17 +38,17 @@ namespace InventoryManager
             int item = -1;
             while (item < 0)
             {
-                Console.WriteLine("Please Enter Item Quantity: ");
+                Console.WriteLine("Please Enter Item Quantity:\n");
                 try
                 {
                     item = Convert.ToInt32(Console.ReadLine());
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid Entry.  Input must be a number.");
-                    Console.WriteLine();
+                    Console.WriteLine("Invalid Entry.  Input must be a number.\n");
                 }
             }
+            Console.WriteLine();
             return item;
         }
 
@@ -63,7 +64,7 @@ namespace InventoryManager
             Console.WriteLine("Item Name: {0}.", name);
             Console.WriteLine("Item Number: {0}.", itemnumber);
             Console.WriteLine("Quantity: {0}.", quantity);
-            Console.WriteLine("Is this OK?  Y/N: ");
+            Console.WriteLine("Is this OK?  Y/N:\n");
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.N)  //readkey function forces an input each time it is used.
             {
@@ -75,7 +76,7 @@ namespace InventoryManager
             }
             else
             {
-                Console.WriteLine("Invalid Entry");
+                Console.WriteLine("Invalid Entry\n");
             }
         }
     }

@@ -30,7 +30,7 @@ namespace InventoryManager
 
         public string NameNewUser()
         {
-            Console.WriteLine("Please Enter Your Name: ");
+            Console.WriteLine("Please Enter Your Name:\n");
             string name = Console.ReadLine();
             Console.WriteLine();
             return name;
@@ -45,7 +45,7 @@ namespace InventoryManager
             }
             else
             {
-                Console.WriteLine("Make this user an Admin? Y/N: ");
+                Console.WriteLine("Make this user an Admin? Y/N:\n");
                 ConsoleKey key = Console.ReadKey(true).Key;
                 Console.WriteLine();
                 if (key == ConsoleKey.Y)
@@ -81,9 +81,8 @@ namespace InventoryManager
             Console.WriteLine("User Name: {0}.", name);
             Console.WriteLine("User Login: {0}.", login);
             Console.WriteLine("Admin Access: {0}.", admin);
-            Console.WriteLine("Is this OK?  Y/N: ");
+            Console.WriteLine("Is this OK?  Y/N:\n");
             ConsoleKey entry = Console.ReadKey(true).Key;
-            Console.WriteLine();
             if (entry == ConsoleKey.N)  //readkey function forces an input each time it is used.
             {
                 CreateNewUser(status);  //"entry" variable method allows for usage as designed in code.
@@ -94,7 +93,7 @@ namespace InventoryManager
             }
             else
             {
-                Console.WriteLine("Invalid Entry");
+                Console.WriteLine("Invalid Entry\n");
             }
         }
     }

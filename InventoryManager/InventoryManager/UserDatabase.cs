@@ -34,7 +34,7 @@ namespace InventoryManager
         public void UpdateList(User user)
         {
             users.Add(user);
-            Console.WriteLine("Database Updated.");
+            Console.WriteLine("Database Updated.\n");
             Console.ReadKey();
         }
 
@@ -47,7 +47,7 @@ namespace InventoryManager
                     return user;
                 }                
             }
-            Console.WriteLine("Login not found.");
+            Console.WriteLine("Login not found.\n");
             User failedlogin;
             failedlogin = null;
             return failedlogin;            
@@ -57,7 +57,7 @@ namespace InventoryManager
         {
             foreach (User user in users)
             {
-                Console.WriteLine("Name: {0}, Login: {1}, Admin: {2}", user.name, user.login, user.admin);
+                Console.WriteLine("Name: {0}, Login: {1}, Admin: {2}\n", user.name, user.login, user.admin);
             }
         }
     }

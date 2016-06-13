@@ -20,29 +20,27 @@ namespace InventoryManager
             int status = database.CheckStatus();
             if (status == 0)
             {
-                Console.WriteLine("Initial User must be designated as Administrator.");
+                Console.WriteLine("Initial User must be designated as Administrator.\n");
                 User user = new User();
                 user.CreateNewUser(status);
                 database.UpdateList(user);              
             }
             else
             {
-                Console.WriteLine("System Updated.");
+                Console.WriteLine("System Updated.\n");
             }
         }
 
         public void DisplayUserConsole()
         {
-            Console.WriteLine();
-            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("What would you like to do, {0}?\n", activeuser.name);
             Console.WriteLine("1 - View Items");
             Console.WriteLine("2 - Checkout Item");
             Console.WriteLine("3 - Return Item");
             Console.WriteLine("4 - View Checked Items");
             Console.WriteLine("5 - Admin Console");
             Console.WriteLine("6 - Logout");
-            Console.WriteLine("Esc - Shut Down");
-            Console.WriteLine();
+            Console.WriteLine("Esc - Shut Down\n");
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.NumPad1 || entry == ConsoleKey.D1)
             {
@@ -64,7 +62,7 @@ namespace InventoryManager
             {
                 if (activeuser.admin == false)
                 {
-                    Console.WriteLine("Access Denied!");
+                    Console.WriteLine("Access Denied!\n");
                 }
                 else
                 {
@@ -85,15 +83,14 @@ namespace InventoryManager
         public void DisplayAdminConsole()
         {
             Console.WriteLine();
-            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("What would you like to do, {0}?\n", activeuser.name);
             Console.WriteLine("1 - Edit Item");
             Console.WriteLine("2 - View Users");
             Console.WriteLine("3 - Create Item");
             Console.WriteLine("4 - Create User");
             Console.WriteLine("5 - User Console");
             Console.WriteLine("6 - Logout");
-            Console.WriteLine("Esc - Shut Down");
-            Console.WriteLine();
+            Console.WriteLine("Esc - Shut Down\n");
             ConsoleKey entry = Console.ReadKey(true).Key;
             if (entry == ConsoleKey.NumPad1 || entry == ConsoleKey.D1)
             {
@@ -146,11 +143,11 @@ namespace InventoryManager
         {
             while (activeuser == null)
             {
-                Console.WriteLine("Please Enter your Login: ");
+                Console.WriteLine("Please Enter your Login: \n");
                 string login = Console.ReadLine();
                 activeuser = database.ObtainLogin(login);
             }
-            Console.WriteLine("Welcome, {0}!", activeuser.name);
+            Console.WriteLine("Welcome, {0}!\n", activeuser.name);
         }
 
         public void Logout()

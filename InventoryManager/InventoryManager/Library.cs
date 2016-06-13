@@ -15,7 +15,7 @@ namespace InventoryManager
 
         public void EditItem()
         {
-            Console.WriteLine("Which item # do you wish to edit? ");
+            Console.WriteLine("Which item # do you wish to edit?\n");
             foreach (Item item in items)
             {
                 Console.WriteLine("Item #: {0}, Item: {1}, Quantity: {2}", item.itemnumber, item.name, item.quantity);
@@ -31,25 +31,25 @@ namespace InventoryManager
                     break;
                 }
             }
-            Console.WriteLine("Invalid Input:");
+            Console.WriteLine("Invalid Input:\n");
         }
 
         public void EditName(Item item)
         {
-            Console.WriteLine("Please Enter New Item Name: ");
+            Console.WriteLine("Please Enter New Item Name:\n");
             item.name = Console.ReadLine();
         }
 
         public void EditQuantity(Item item)
         {
-            Console.WriteLine("Please Enter New Item Quantity: ");
+            Console.WriteLine("Please Enter New Item Quantity:\n");
             try
             {
                 item.quantity = Convert.ToInt32(Console.ReadLine());
             }
             catch
             {
-                Console.WriteLine("Invalid Entry.  Input must be a number.");
+                Console.WriteLine("Invalid Entry.  Input must be a number.\n");
             }
         }
 
@@ -62,7 +62,7 @@ namespace InventoryManager
         public void UpdateList(Item item)
         {
             items.Add(item);
-            Console.WriteLine("Library Updated.");
+            Console.WriteLine("Library Updated.\n");
             Console.ReadKey();
         }
 
@@ -95,17 +95,18 @@ namespace InventoryManager
                 Console.WriteLine("{0}", activeuser.held[len - 1].name);
                 len--;
             }
+            Console.WriteLine();
         }
 
         public void CheckoutItem(User activeuser)
         {
             if (activeuser.held.Count == 3)
             {
-                Console.WriteLine("Please Return something before checking out more items.");
+                Console.WriteLine("Please Return something before checking out more items.\n");
             }
             else
             {
-                Console.WriteLine("Which item # do you wish to checkout? ");
+                Console.WriteLine("Which item # do you wish to checkout?\n");
                 foreach (Item item in items)
                 {
                     Console.WriteLine("Item #: {0}, Item: {1}, Quantity: {2}", item.itemnumber, item.name, item.quantity);
@@ -152,7 +153,7 @@ namespace InventoryManager
             {
                 if (validquantity == false || validitem == false)
                 {
-                    Console.WriteLine("Invalid Input");
+                    Console.WriteLine("Invalid Input\n");
                     break;
                 }
                 else if (item.itemnumber == edit && item.quantity > 0)
@@ -167,7 +168,7 @@ namespace InventoryManager
         {
             if (activeuser.held.Count == 0)
             {
-                Console.WriteLine("You don't have any items checked out.");
+                Console.WriteLine("You don't have any items checked out.\n");
             }
             else
             {
@@ -177,7 +178,7 @@ namespace InventoryManager
 
         public void ReturnItem(User activeuser)
         {
-            Console.WriteLine("Which item # do you wish to return? ");
+            Console.WriteLine("Which item # do you wish to return?\n");
             foreach (Item item in activeuser.held)
             {
                 Console.WriteLine("Item #: {0}, Item: {1}", item.itemnumber, item.name);
@@ -197,7 +198,7 @@ namespace InventoryManager
             }
             if (validinput == false)
             {
-                Console.WriteLine("Invalid Input:");
+                Console.WriteLine("Invalid Input:\n");
             }
         }
 
